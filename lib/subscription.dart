@@ -11,7 +11,7 @@ class Subscription extends StatefulWidget {
 class _SubscriptionState extends State<Subscription> {
 
   bool toogleBasic = false;
-  bool tooglePopular = true;
+  bool tooglePopular = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +60,13 @@ class _SubscriptionState extends State<Subscription> {
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: toogleBasic? Colors.purple.shade300: Colors.white,
+                elevation: 0,
               ),
               onPressed: (){
-                toogleBasic = true;
+                setState(() {
+                  tooglePopular = false;
+                  toogleBasic = true;
+                });
               },
               child: Text(
                 "Basic",
@@ -79,9 +83,13 @@ class _SubscriptionState extends State<Subscription> {
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: tooglePopular? Colors.purple.shade300: Colors.white,
+                elevation: 0,
               ),
               onPressed: (){
-                tooglePopular = true;
+                setState(() {
+                  tooglePopular = true;
+                  toogleBasic = false;
+                });
               },
               child: Text(
                 "Popular",
